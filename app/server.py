@@ -15,6 +15,7 @@ from starlette.middleware.cors import CORSMiddleware
 from starlette.responses import HTMLResponse, JSONResponse
 from starlette.staticfiles import StaticFiles
 
+arr = [ "太陽伊布", "冰伊布", "火伊布", "葉伊布", "仙子伊布"]
 
 #set url
 # export_file_url = 'https://drive.google.com/uc?export=download&id=1ZZ_2JRe39KcgqGu75watpeLOtQGfeDPA'
@@ -89,7 +90,7 @@ async def analyze(request):
     img = preprocess_input( np.array([img]) )
     predictions = learn.predict(img)  
     prediction = predictions.argmax()
-    return JSONResponse({'result': str(prediction)})
+    return JSONResponse({'result': str(arr[prediction])})
 
 
 if __name__ == '__main__':
